@@ -12,6 +12,8 @@ module IssueIdsControllerPatch
             after_filter :fix_creation_notice, :only => :create
 
             alias_method_chain :retrieve_previous_and_next_issue_ids, :full_ids
+            
+            alias_method_chain :build_new_issue_from_params, :full_ids
         end
     end
 
@@ -42,6 +44,15 @@ module IssueIdsControllerPatch
                 @next_issue_id = next_issue.issue_id if next_issue
             end
         end
+        
+        def build_new_issue_from_params_with_full_ids
+            if params[:copy_from].include?('-')
+                issue = Issue.find(params[:copy_from])
+                params[:copy_from] = issue.id.to_s if issue
+            end
+            build_new_issue_from_params_without_full_ids
+        end
+
 
     end
 
