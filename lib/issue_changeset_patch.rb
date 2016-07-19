@@ -39,7 +39,7 @@ module IssueChangesetPatch
             return if comments.blank?
             ref_keywords      = Setting.commit_ref_keywords.downcase.split(',').collect(&:strip)
             ref_keywords_any  = ref_keywords.delete('*')
-            fix_keywords      = Setting.commit_fix_keywords.downcase.split(',').collect(&:strip)
+            fix_keywords      = Setting.commit_update_keywords_array.map {|r| r['keywords']}.flatten.compact # as in redmine 2.5.1
             kw_regexp         = (ref_keywords + fix_keywords).collect{ |kw| Regexp.escape(kw) }.join('|')
             referenced_issues = []
 
