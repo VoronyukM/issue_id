@@ -46,7 +46,7 @@ module IssueIdsControllerPatch
         end
         
         def build_new_issue_from_params_with_full_ids
-            if params[:copy_from].include?('-')
+            if params[:copy_from] && params[:copy_from].include?('-')
                 issue = Issue.find(params[:copy_from])
                 params[:copy_from] = issue.id.to_s if issue
             end
