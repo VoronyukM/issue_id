@@ -20,8 +20,13 @@ Run:
 sameersbn/postgresql:9.4-23
 sameersbn/redmine:2.6.1
 
-# commands
+# master commands
 
+su redmine
+
+cd ~/redmine/plugins && git clone https://github.com/kaikuo/issue_id.git && bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+
+# branch  commands
 su redmine
 
 cd ~/redmine/plugins && git clone https://github.com/kaikuo/issue_id.git && cd issue_id && git checkout -t origin/autoid && cd ../..  && bundle exec rake redmine:plugins:migrate RAILS_ENV=production
