@@ -3,7 +3,7 @@ class CreateMovedIssues < ActiveRecord::Migration
     def self.up
         create_table :moved_issues do |t|
             t.column :issue_id,   :integer
-            t.column :old_key,    :string, :limit => 10
+            t.column :old_key,    :string, :limit => 32
             t.column :old_number, :integer
         end
 

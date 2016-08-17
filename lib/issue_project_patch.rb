@@ -3,7 +3,7 @@ require_dependency 'project'
 module IssueProjectPatch
 
     def self.included(base)
-        base.const_set(:ISSUE_KEY_MAX_LENGTH, 10)
+        base.const_set(:ISSUE_KEY_MAX_LENGTH, 32)
         base.send(:include, InstanceMethods)
         base.class_eval do
             unloadable
