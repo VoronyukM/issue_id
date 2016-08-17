@@ -1,7 +1,7 @@
 class AddProjectsIssueKey < ActiveRecord::Migration
 
     def self.up
-        add_column :projects, :issue_key, :string, :limit => 10
+        add_column :projects, :issue_key, :string, :limit => 32
     end
 
     def self.down
