@@ -50,6 +50,14 @@ module IssueIdsControllerPatch
                 issue = Issue.find(params[:copy_from])
                 params[:copy_from] = issue.id.to_s if issue
             end
+            if params[:issue]
+                issue = params[:issue]
+                pid = issue[:parent_issue_id]
+                if pid.include?('-')
+                    raw_issue = Issue.find(pid)
+                    issue[:parent_issue_id] = raw_issue.id.to_s if raw_issue
+                end
+            end
             build_new_issue_from_params_without_full_ids
         end
 
