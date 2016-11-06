@@ -73,7 +73,7 @@ Redmine::Plugin.register :issue_id do
     author_url 'http://www.andriylesyuk.com/'
     description 'Adds support for issue ids in format: CODE-number.'
     url 'http://projects.andriylesyuk.com/projects/issue-id'
-    version '0.0.1b'
+    version '0.0.1c'
 
     settings :default => {
         :issue_key_sharing => false
