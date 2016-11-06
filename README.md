@@ -1,51 +1,30 @@
 # Change log
 
-try to change parent_issue_id when create
+0.0.2
+Fix: Error 404 when copy an issue with ISSUE-id
+Fix: Can not deal issue id when adding a subtask 
+Fix: Git repository parsing fails if there was not specified any fix keywords in Redmine settings
 
 # info
 
-https://github.com/kaikuo/issue_id.git
+Sequent issue numbers are easier to remember. While Redmine does uses sequent numbers for issues they are sequent not in the project scope. Therefore on installations with large number of projects we are getting random-like increasing numbers for a project’s issues.
 
-fork from 
+The majority of Redmine competitors support sequent per-project issue numbers by prepending specific project prefixes like REDMINE-. This plugins does the same for Redmine! At the same time the native issue numbering style continues to work fine.
 
-https://github.com/VoronyukM/issue_id
+*P.S. When moved the issue prefix and number get changed, but still the previous issue id continues to work by redirecting to the new one.*
 
 # Installation notes
 
-Copy issue_id directory to: #{RAILS_ROOT}/plugins
-Run: 
-
-# docker iamges
-
-sameersbn/postgresql:9.4-23
-sameersbn/redmine:2.6.1
-
-# master commands
-
-su redmine
-
-cd ~/redmine/plugins && git clone https://github.com/kaikuo/issue_id.git && bundle exec rake redmine:plugins:migrate RAILS_ENV=production
-
-
-https://git.oschina.net/kzhuo/issue_id.git
-
-# branch  commands
-su redmine
-
-cd ~/redmine/plugins && git clone https://github.com/kaikuo/issue_id.git && cd issue_id && git checkout -t origin/autoid && cd ../..  && bundle exec rake redmine:plugins:migrate RAILS_ENV=production
-
+```
+cd /path/to/redmine/
+git clone https://github.com/VoronyukM/issue_id.git
 bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+```
 
-bundle exec rake redmine:plugins:migrate RAILS_ENV=development
+Restart the Redmine/ChiliProject
 
-Restart Redmine/ChiliProject
 
-# new plugins
+To uninstall the plugin migrate the database back and remove the plugin:
+TODO
 
-git clone https://github.com/javiferrer/redmine_import_issues.git
-git clone https://github.com/two-pack/redmine_xlsx_format_issue_exporter.git
-
-gem sources -r https://rubygems.org/
-gem sources -a https://ruby.taobao.org/
-
-bundle install && bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+Further information about plugin installation can be found at: http://www.redmine.org/wiki/redmine/Plugins
