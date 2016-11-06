@@ -1,8 +1,11 @@
 # Change log
 
 0.0.2
+
 Fix: Error 404 when copy an issue with ISSUE-id
+
 Fix: Can not deal issue id when adding a subtask 
+
 Fix: Git repository parsing fails if there was not specified any fix keywords in Redmine settings
 
 # info
