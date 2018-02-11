@@ -53,7 +53,7 @@ module IssueIdsControllerPatch
             if params[:issue]
                 issue = params[:issue]
                 pid = issue[:parent_issue_id]
-                if pid.include?('-')
+                if pid && pid.include?('-')
                     raw_issue = Issue.find(pid)
                     issue[:parent_issue_id] = raw_issue.id.to_s if raw_issue
                 end
